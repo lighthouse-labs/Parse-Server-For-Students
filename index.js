@@ -8,8 +8,6 @@ const path = require('path');
 
 const ParseDashboard = require('parse-dashboard');
 
-const apps = require('./apps.js');
-
 const databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
