@@ -1,35 +1,59 @@
 // Example express application adding the parse-server module to expose Parse
 // compatible API routes.
+'use strict';
 
-var express = require('express');
-var ParseServer = require('parse-server').ParseServer;
-var path = require('path');
+const express = require('express');
+const ParseServer = require('parse-server').ParseServer;
+const path = require('path');
 
-var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
+const ParseDashboard = require('parse-dashboard');
+
+const apps = require('./apps.js');
+
+const databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
-var api = new ParseServer({
+const appID = process.env.APP_ID || 'myAppId';
+const masterKey = process.env.MASTER_KEY || '';
+const serverURL = process.env.SERVER_URL || 'http://localhost:1337/parse';
+const api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-  appId: process.env.APP_ID || 'myAppId',
-  masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
-  serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse'  // Don't forget to change to https if needed
+  appId: appID,
+  masterKey: masterKey, //Add your master key here. Keep it secret!
+  serverURL: serverURL// Don't forget to change to https if needed
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
 
-var app = express();
+const app = express();
 
 // Serve static assets from the /public folder
 app.use('/public', express.static(path.join(__dirname, '/public')));
 
 // Serve the Parse API on the /parse URL prefix
-var mountPath = process.env.PARSE_MOUNT || '/parse';
+const mountPath = process.env.PARSE_MOUNT || '/parse';
 app.use(mountPath, api);
+
+// Dashboard
+const dashboard = new ParseDashboard({
+  "apps": [
+    {
+      "serverURL": serverURL,//"https://parse-server-ios-pt-2.herokuapp.com/parse",
+      "appId": appID,//"28e19516fb54481e887f3a938620a0fa",
+      "masterKey": masterKey,
+      "appName": "App"
+    }
+  ]
+});
+
+// make the Parse Dashboard available at /dashboard
+app.use('/dashboard', dashboard);
+
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
@@ -42,8 +66,9 @@ app.get('/test', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/test.html'));
 });
 
-var port = process.env.PORT || 1337;
-var httpServer = require('http').createServer(app);
+const port = process.env.PORT || 1337;
+const httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
   console.log('parse-server running on port ' + port + '.');
 });
+
