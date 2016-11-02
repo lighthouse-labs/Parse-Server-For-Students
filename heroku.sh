@@ -16,7 +16,7 @@ read masterKey
 echo -n "App ID: "
 read appID
 
-serverURL="http://$appName.herokuapp.com/parse"
+serverURL="https://$appName.herokuapp.com/parse"
 
 # Heroku
 heroku apps:create --org $herokuTeamName $appName;
