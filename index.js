@@ -46,7 +46,14 @@ const dashboard = new ParseDashboard({
       "masterKey": masterKey,
       "appName": "App"
     }
-  ]
+  ],
+  "users": [
+    {
+      "user":"lighthouse",
+      "pass":"labs"
+    }
+  ],
+  "trustProxy": 1
 });
 
 // make the Parse Dashboard available at /dashboard
