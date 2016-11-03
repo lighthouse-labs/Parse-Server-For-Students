@@ -47,12 +47,12 @@ const dashboard = new ParseDashboard({
       "appName": process.env.USER_NAME || "App"
     }
   ],
-  // "users": [
-  //   {
-  //     "user":"lighthouse",
-  //     "pass":"labs"
-  //   }
-  // ],
+  "users": [
+    {
+      "user":"lighthouse",
+      "pass":"labs"
+    }
+  ],
   "trustProxy": 1
 });
 
