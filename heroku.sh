@@ -22,7 +22,7 @@ serverURL="https://$appName.herokuapp.com/parse"
 
 # Heroku
 heroku apps:create --org $herokuTeamName $appName;
-heroku config:set --app $appName MASTER_KEY=$masterKey APP_ID=$appID SERVER_URL=$serverURL USER_NAME=$userName;
+heroku config:set --app "$appName" MASTER_KEY=$masterKey APP_ID=$appID SERVER_URL=$serverURL USER_NAME="$userName";
 heroku addons:create --app $appName mongolab;
 heroku git:remote -a $appName;
 git push heroku master
