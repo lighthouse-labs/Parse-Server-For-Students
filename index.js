@@ -41,18 +41,18 @@ app.use(mountPath, api);
 const dashboard = new ParseDashboard({
   "apps": [
     {
-      "serverURL": serverURL,//"https://parse-server-ios-pt-2.herokuapp.com/parse",
-      "appId": appID,//"28e19516fb54481e887f3a938620a0fa",
+      "serverURL": serverURL,
+      "appId": appID,
       "masterKey": masterKey,
-      "appName": "App"
+      "appName": process.env.USER_NAME || "App"
     }
   ],
-  "users": [
-    {
-      "user":"lighthouse",
-      "pass":"labs"
-    }
-  ],
+  // "users": [
+  //   {
+  //     "user":"lighthouse",
+  //     "pass":"labs"
+  //   }
+  // ],
   "trustProxy": 1
 });
 
