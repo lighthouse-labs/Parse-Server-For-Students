@@ -57,6 +57,7 @@ username: lighthouse
 password: labs
 ```
 
+* To access the server instances on Heroku, login to heroku, select the `ios-parse-servers` team, and click on `apps`
 
 
 
