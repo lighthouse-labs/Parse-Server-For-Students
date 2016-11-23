@@ -12,7 +12,7 @@
 herokuTeamName="ios-parse-servers"
 
 # User Input
-if [ -z $1 ]
+if [ -z "$1" ]
   then
   echo -n "App Name (must be unique): "
   read appName
@@ -23,17 +23,17 @@ if [ -z $1 ]
   echo -n "Student's Name: "
   read userName
 else
-  appName=$1
-  masterKey=$2
-  appID=$3
-  userName=$4
+  appName="$1"
+  masterKey="$2"
+  appID="$3"
+  userName="$4"
 fi
 
 serverURL="https://$appName.herokuapp.com/parse"
 
 # Heroku
-heroku apps:create --org $herokuTeamName $appName;
-heroku config:set --app "$appName" MASTER_KEY=$masterKey APP_ID=$appID SERVER_URL=$serverURL USER_NAME="$userName";
-heroku addons:create --app $appName mongolab;
-heroku git:remote -a $appName;
+heroku apps:create --org "$herokuTeamName" "$appName";
+heroku config:set --app "$appName" MASTER_KEY="$masterKey" APP_ID="$appID" SERVER_URL="$serverURL" USER_NAME="$userName";
+heroku addons:create --app "$appName" mongolab;
+heroku git:remote -a "$appName";
 git push heroku master
