@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 
-- Parse Server template.
-- Scripts to generate new Parse Server instances for part time cohorts.
-- 
-
 ### Changed
+
+## [2.0.0] - 2016-11-29
+### Added
+
+- Parse Server template copied from [parse-server-example](https://github.com/ParsePlatform/parse-server-example).
+- Parse Dashboard on the server.
+- Scripts to generate new Parse Server instances for part time cohorts.
 
