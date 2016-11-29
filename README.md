@@ -4,6 +4,8 @@ This is a copy of Parse's [parse-server-example](https://github.com/ParsePlatfor
 
 The main change made to this project, is that it includes [parse-dashboard](https://github.com/ParsePlatform/parse-dashboard) on the same server. This means that a student can access their dashboard on heroku at the same ip address they use to access the parse from their iOS app.
 
+This project follows different versioning and tagging than the original [parse-server-example](https://github.com/ParsePlatform/parse-server-example). Make sure to check the changelog for all changes and versions.
+
 # Seting Up
 
 We are using heroku to deploy an individual dyno for each student. Each dyno is deployed to the `ios-parse-servers` team on LighthouseLabs' heroku. 
