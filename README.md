@@ -22,8 +22,9 @@ The easiest way to create or update the servers, is to first update the [google 
 
 There are currently 2 different bash scripts you can use to generate heroku dynos from the google sheet:
 
-* [Parse Server from Google Sheet instructions](https://github.com/lighthouse-labs/Parse-Server-For-Students/blob/master/Parse_Server_from_google_sheet_instructions.md) This will update or create all servers in the google sheet.
-* [Parse Server script instructions](https://github.com/lighthouse-labs/Parse-Server-For-Students/blob/master/Parse_Server_from_google_sheet_instructions.md) This will update or create only a sinlge server.
+* [Parse Server from Google Sheet instructions](https://github.com/lighthouse-labs/Parse-Server-For-Students/blob/master/docs/Parse_Server_from_google_sheet_instructions.md) This will update or create all servers in the google sheet.
+* [Parse Server script instructions](https://github.com/lighthouse-labs/Parse-Server-For-Students/blob/master/docs/Parse_Server_from_google_sheet_instructions.md) This will update or create only a sinlge server.
+* [Parse Server Delete Dyno instructions](https://github.com/lighthouse-labs/Parse-Server-For-Students/blob/master/docs/Parse_Server_destroy_script_instructions.md) This will delete the dyno when we are done using it. It is important that you use this script to remove all the student dynos at the end of the course.
 
 
 #### How the scripts work
