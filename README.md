@@ -8,7 +8,7 @@ This project follows different versioning and tagging than the original [parse-s
 
 # Seting Up
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lighthouse-labs/Parse-Server-For-Students)
 
 *Instructions using the Heroku Button*:
 
