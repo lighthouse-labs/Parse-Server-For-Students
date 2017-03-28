@@ -10,10 +10,8 @@ This project follows different versioning and tagging than the original [parse-s
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lighthouse-labs/Parse-Server-For-Students)
 
-*Instructions using the Heroku Button*:
-
 * If you do not already have an account with Heroku, go to [https://signup.heroku.com/](https://signup.heroku.com/) and follow the instructions to create one.
-* Click on the Doploy to Heroku button above which will take you to the `Create New App` setup.
+* Click on the Deploy to Heroku button above which will take you to the `Create New App` setup.
 
 > Note: If you have not yet linked your github account to heroku, you will be prompted do this now.
 
@@ -25,19 +23,19 @@ This project follows different versioning and tagging than the original [parse-s
   - `PARSE_MOUNT` leave this as `/parse`
   - `APP_ID` enter any alphanumeric string here, you will need to use this later.
   - `MASTER_KEY` enter any alphanumeric string here, you will need to use this later.  
-  - `SERVER_URL` the URL that you will point you're iOS app to. Make sure the app name is the same as the name you put in the first field.
+  - `SERVER_URL` the URL that you will point your iOS app to. Make sure the app name is the same as the name you put in the first field.
   - `DASHBOARD_USER_NAME` set this to be the username you want to use to access parse dashboard.
   - `DASHBOARD_PASSWORD` set this to be the password you want to use to access parse dashboard.
 
-> Note: For the `APP_ID` AND `MASTER_KEY` you can use an ID generator to create keys for you if you'de like <https://www.uuidgenerator.net/>
+> Note: For the `APP_ID` AND `MASTER_KEY` you can use an ID generator to create keys for you if you'd like <https://www.uuidgenerator.net/>
 
 ![Environment Variables](http://i.imgur.com/NzEDBd9.png)
 
-Click the Deply button, to deploy your app.
+Click the Deploy button, to deploy your app.
 
 ![Deploy](http://i.imgur.com/QTIP1OP.png)
 
-> If this is your first Heroku app, you will be prompted to enter your credit card information. Don't worry, you will not get charged for any of this, but Heroku does require you to enter this information weather you're using the free or paid tools.
+> If this is your first Heroku app, you will be prompted to enter your credit card information. Don't worry, you will not get charged for any of this, but Heroku does require you to enter this information whether you're using the free or paid tools.
 
 
 # Using it
