@@ -8,38 +8,46 @@ This project follows different versioning and tagging than the original [parse-s
 
 # Seting Up
 
-We are using heroku to deploy an individual dyno for each student. Each dyno is deployed to the `ios-parse-servers` team on LighthouseLabs' heroku. 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-### Google Sheet
+*Instructions using the Heroku Button*:
 
-We are storing the information for each server in this [google sheet](https://docs.google.com/spreadsheets/d/1hBRyle189P6GNA8llTylm0mRz0IFAB6G4sDRL5RuXlk/edit?usp=sharing). This sheet is then shared with all the students so they can quickly see their app keys and urls. 
+* If you do not already have an account with Heroku, go to [https://signup.heroku.com/](https://signup.heroku.com/) and follow the instructions to create one.
+* Click on the Doploy to Heroku button above which will take you to the `Create New App` setup.
 
-We use generic names for the servers themselves (server1, server2, etc) then assign a server to each student when a new cohort starts.
+> Note: If you have not yet linked your github account to heroku, you will be prompted do this now.
 
-The easiest way to create or update the servers, is to first update the [google sheet](https://docs.google.com/spreadsheets/d/1hBRyle189P6GNA8llTylm0mRz0IFAB6G4sDRL5RuXlk/edit?usp=sharing). Once you're happy with the information in the sheet, you can run one of the provided scripts that will handle generating heroku dynos for you.
+* Enter a unique name for you app:
 
-### Bash Scripts
+![Create New app](http://i.imgur.com/1kqgCOV.png)
 
-There are currently 2 different bash scripts you can use to generate heroku dynos from the google sheet:
+* Fill out the rest of the form:
+  - `PARSE_MOUNT` leave this as `/parse`
+  - `APP_ID` enter any alphanumeric string here, you will need to use this later.
+  - `MASTER_KEY` enter any alphanumeric string here, you will need to use this later.  
+  - `SERVER_URL` the URL that you will point you're iOS app to. Make sure the app name is the same as the name you put in the first field.
+  - `DASHBOARD_USER_NAME` set this to be the username you want to use to access parse dashboard.
+  - `DASHBOARD_PASSWORD` set this to be the password you want to use to access parse dashboard.
 
-* [Parse Server from Google Sheet instructions](https://github.com/lighthouse-labs/Parse-Server-For-Students/blob/master/docs/Parse_Server_from_google_sheet_instructions.md) This will update or create all servers in the google sheet.
-* [Parse Server script instructions](https://github.com/lighthouse-labs/Parse-Server-For-Students/blob/master/docs/Parse_Server_from_google_sheet_instructions.md) This will update or create only a sinlge server.
-* [Parse Server Delete Dyno instructions](https://github.com/lighthouse-labs/Parse-Server-For-Students/blob/master/docs/Parse_Server_destroy_script_instructions.md) This will delete the dyno when we are done using it. It is important that you use this script to remove all the student dynos at the end of the course.
+> Note: For the `APP_ID` AND `MASTER_KEY` you can use an ID generator to create keys for you if you'de like <https://www.uuidgenerator.net/>
 
+![Environment Variables](http://i.imgur.com/NzEDBd9.png)
 
-#### How the scripts work
+Click the Deply button, to deploy your app.
 
-The scripts work by taking advantage of the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line). You must install this and login before you can run any of the scripts.
+![Deploy](http://i.imgur.com/QTIP1OP.png)
 
-Most of the work going on in the script is either getting input for the server information, or parsing input from the Google Sheet's csv file. The heavy lifting is then passed onto the the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) using commands like `heroku apps:create` to create new dynos.
+> If this is your first Heroku app, you will be prompted to enter your credit card information. Don't worry, you will not get charged for any of this, but Heroku does require you to enter this information weather you're using the free or paid tools.
+
 
 # Using it
 
-Once the scripts have finished running and heroku has done it's magic, you can start using Parse Server from your app and access Parse Dashboard from your browser.
+Once you've deployed to Heroku, you can start using Parse Server from your app and access Parse Dashboard from your browser.
 
 ### Parse Server
 
 Example using it on iOS (Swift) using the details from the Google Sheet:
+
 ```swift
 //in your AppDelegate's didFinishLaunchingWithOptions
 
@@ -54,18 +62,7 @@ Parse.initialize(with: configuration)
 
 The parse dashboard for each Parse Server instance is located at the `/dashboard` endpoint. For example, the dashboard for the main server `https://parse-server-ios-main.herokuapp.com/parse` is located at `https://parse-server-ios-main.herokuapp.com/dashboard`.
 
-Parse Dashboard requires a username and password when deploying to a server. The username and password for everyone is:
-
-* username: `lighthouse`
-* password: `labs`
-
-This information can be changed inside `index.js` line 52 and 53.
-
-# Making Changes
-
-Make all changes on a new feature branch then create a pull request for someone else to merge.
-
-### Testing Changes
+## Local Deployment
 
 * Make sure you have at least Node 4.3. `node --version`
 * Clone this repo and change directory to it.
