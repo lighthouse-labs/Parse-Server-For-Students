@@ -44,13 +44,13 @@ const dashboard = new ParseDashboard({
       "serverURL": serverURL,
       "appId": appID,
       "masterKey": masterKey,
-      "appName": process.env.USER_NAME || "App"
+      "appName": process.env.DASHBOARD_USER_NAME || "App"
     }
   ],
   "users": [
     {
-      "user":"lighthouse",
-      "pass":"labs"
+      "user":process.env.DASHBOARD_USER_NAME || "lighthouse",
+      "pass":process.env.DASHBOARD_PASSWORD || "labs"
     }
   ],
   "trustProxy": 1
@@ -76,4 +76,3 @@ const httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
   console.log('parse-server running on port ' + port + '.');
 });
-
